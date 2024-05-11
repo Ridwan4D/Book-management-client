@@ -1,64 +1,25 @@
-import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
-import { useNavigate } from "react-router-dom";
-const AddBook = () => {
-  const { user } = useContext(AuthContext);
-  const { email } = user;
-  const navigate = useNavigate();
-  // console.log(email);
+import { Toaster } from "react-hot-toast";
+const UpdateBook = () => {
   const {
     register,
     handleSubmit,
     // watch,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
-  const handleAddBook = (data) => {
-    const {
-      image,
-      book,
-      bookDescription,
-      quantity,
-      rating,
-      selectOption,
-      author,
-    } = data;
-    const bookInfo = {
-      image,
-      book,
-      bookDescription,
-      quantity,
-      rating,
-      selectOption,
-      author,
-      email,
-    };
-    // console.log(bookInfo);
+  const handleUpdateBook = data =>{
+    console.log(data);
+  }
 
-    fetch("http://localhost:5000/addBooks", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(bookInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        toast.success("Book Added Successfully!");
-        setTimeout(() => {
-          navigate("/allBooks");
-        }, 1000);
-      });
-  };
 
   return (
     <div>
       <h2 className="mb-8 underline text-4xl font-bold dark:text-white">
-        Add Book
+        Update Book
       </h2>
       <div className="py-8 px-4 mx-auto max-w-6xl lg:py-16 bg-orange-300 rounded-md">
-        <form onSubmit={handleSubmit(handleAddBook)}>
+        <form onSubmit={handleSubmit(handleUpdateBook)}>
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <div>
               <label className="block mb-1 text-lg font-semibold text-white">
@@ -66,20 +27,12 @@ const AddBook = () => {
               </label>
               <input
                 type="text"
-                {...register("image", {
-                  required: { value: true, message: "This field is required" },
-                })}
+                {...register("image")}
                 name="image"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Enter Image URL"
               />
-              <span>
-                {errors.image && (
-                  <p className="text-sm text-red-600 font-bold">
-                    {errors.image.message}
-                  </p>
-                )}
-              </span>
+              
             </div>
             <div className="w-full">
               <label className="block mb-1 text-lg font-semibold text-white">
@@ -87,20 +40,12 @@ const AddBook = () => {
               </label>
               <input
                 type="text"
-                {...register("book", {
-                  required: { value: true, message: "This field is required" },
-                })}
+                {...register("book")}
                 name="book"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Write Book Name"
               />
-              <span>
-                {errors.book && (
-                  <p className="text-sm text-red-600 font-bold">
-                    {errors.book.message}
-                  </p>
-                )}
-              </span>
+              
             </div>
             <div className="w-full">
               <label className="block mb-1 text-lg font-semibold text-white">
@@ -108,20 +53,12 @@ const AddBook = () => {
               </label>
               <input
                 type="text"
-                {...register("quantity", {
-                  required: { value: true, message: "This field is required" },
-                })}
+                {...register("quantity")}
                 name="quantity"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Number Of Book"
               />
-              <span>
-                {errors.quantity && (
-                  <p className="text-sm text-red-600 font-bold">
-                    {errors.quantity.message}
-                  </p>
-                )}
-              </span>
+              
             </div>
             <div>
               <label className="block mb-1 text-lg font-semibold text-white">
@@ -129,20 +66,12 @@ const AddBook = () => {
               </label>
               <input
                 type="text"
-                {...register("author", {
-                  required: { value: true, message: "This field is required" },
-                })}
+                {...register("author")}
                 name="author"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Write Author Name"
               />
-              <span>
-                {errors.author && (
-                  <p className="text-sm text-red-600 font-bold">
-                    {errors.author.message}
-                  </p>
-                )}
-              </span>
+              
             </div>
             <div>
               <label className="block mb-1 text-lg font-semibold text-white">
@@ -150,10 +79,7 @@ const AddBook = () => {
               </label>
               <select
                 className="select select-bordered w-full"
-                {...register("selectOption", {
-                  validate: (value) => value !== "0",
-                  required: { value: true, message: "This field is required" },
-                })}
+                {...register("selectOption")}
               >
                 <option value="0" disabled selected>
                   Select Category
@@ -166,13 +92,7 @@ const AddBook = () => {
                 <option value="Fiction">Fiction</option>
                 <option value="Other">Other</option>
               </select>
-              <span>
-                {errors.selectOption && (
-                  <p className="text-sm text-red-600 font-bold">
-                    {errors.selectOption.message}
-                  </p>
-                )}
-              </span>
+              
             </div>
             <div>
               <label className="block mb-1 text-lg font-semibold text-white">
@@ -180,20 +100,12 @@ const AddBook = () => {
               </label>
               <input
                 type="text"
-                {...register("rating", {
-                  required: { value: true, message: "This field is required" },
-                })}
+                {...register("rating")}
                 name="rating"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Book Rating (1-5)"
               />
-              <span>
-                {errors.rating && (
-                  <p className="text-sm text-red-600 font-bold">
-                    {errors.rating.message}
-                  </p>
-                )}
-              </span>
+              
             </div>
             <div className="sm:col-span-2">
               <label className="block mb-1 text-lg font-semibold text-white">
@@ -201,20 +113,12 @@ const AddBook = () => {
               </label>
               <textarea
                 name="bookDscription"
-                {...register("bookDescription", {
-                  required: { value: true, message: "This field is required" },
-                })}
+                {...register("bookDescription")}
                 rows="8"
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="write about the book"
               ></textarea>
-              <span>
-                {errors.bookDescription && (
-                  <p className="text-sm text-red-600 font-bold">
-                    {errors.bookDescription.message}
-                  </p>
-                )}
-              </span>
+              
             </div>
           </div>
           <button
@@ -230,4 +134,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default UpdateBook;
