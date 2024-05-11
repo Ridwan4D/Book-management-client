@@ -140,7 +140,7 @@ const Login = () => {
               <p className="text-center">
                 Not registered yet?{" "}
                 <Link
-                  to="/signUp"
+                  to="/register"
                   className="text-indigo-600 font-medium inline-flex space-x-1 items-center"
                 >
                   <span>Register now </span>

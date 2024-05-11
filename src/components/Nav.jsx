@@ -24,7 +24,7 @@ export const Nav = () => {
         <NavLink to="/addBook">Add Book</NavLink>
       </li>
       <li>
-        <NavLink to="/allBook">All Book</NavLink>
+        <NavLink to="/allBooks">All Book</NavLink>
       </li>
       <li>
         <NavLink to="/borrowedBook">Borrowed Book</NavLink>
@@ -46,7 +46,7 @@ export const Nav = () => {
     }
   };
   return (
-    <div className="bg-orange-400" id="navActive">
+    <div className="bg-orange-400 mb-10" id="navActive">
       <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative grid items-center grid-cols-2 lg:grid-cols-3">
           <ul className="items-center hidden space-x-3 text-white text-lg font-bold lg:flex font-quick">
@@ -93,7 +93,7 @@ export const Nav = () => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className="px-4 py-1 rounded-md text-lg font-semibold bg-white border-0"
+                className="px-4 py-1 rounded-md text-lg font-semibold bg-white text-orange-400 border-0"
               >
                 Logout
               </button>

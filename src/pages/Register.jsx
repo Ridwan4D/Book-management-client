@@ -7,7 +7,7 @@ import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import registerImg from '../assets/register.jpg'
 
 const Register = () => {
-  const { signUpUser: registerUser, singUpWithApp } = useContext(AuthContext);
+  const { registerUser, singUpWithApp } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
   const location = useLocation();
