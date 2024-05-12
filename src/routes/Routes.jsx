@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             <AllBooks />
           </SecureRoute>
         ),
-        loader: ()=> fetch('http://localhost:5000/allBooks')
+        loader: () => fetch("http://localhost:5000/allBooks"),
       },
       {
         path: "/borrowedBook",
@@ -47,11 +47,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateBook/:id",
-        element: (
-          <SecureRoute>
-            <UpdateBook />
-          </SecureRoute>
-        ),
+        element: <UpdateBook></UpdateBook>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allBooks/${params.id}`),
       },
       {
         path: "/login",

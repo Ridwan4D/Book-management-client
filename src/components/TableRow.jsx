@@ -10,6 +10,7 @@ const TableRow = ({ aBook }) => {
 //   console.log(aBook);
   const { _id, image, book, author, rating, quantity, selectOption, email } =
     aBook;
+    // console.log(_id)
   return (
     <tr>
       <td className="px-10 py-3.5 text-sm font-medium text-gray-700 whitespace-nowrap">

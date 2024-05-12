@@ -200,7 +200,7 @@ const AddBook = () => {
                 Description
               </label>
               <textarea
-                name="bookDscription"
+                name="bookDescription"
                 {...register("bookDescription", {
                   required: { value: true, message: "This field is required" },
                 })}

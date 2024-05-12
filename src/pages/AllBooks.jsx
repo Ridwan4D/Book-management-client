@@ -4,19 +4,20 @@ import { MdTableRows } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import TableRow from "../components/TableRow";
+import BookCard from "../components/BookCard";
 
 const AllBooks = () => {
   const { user } = useContext(AuthContext);
   const { email } = user;
   const allBooks = useLoaderData();
   const [format, setFormat] = useState("table");
-  console.log(allBooks);
-  const userMail = allBooks.find(book => book.email === email)
-//   console.log(userMail?.email);
+  // console.log(allBooks);
+  const userMail = allBooks.find((book) => book.email === email);
+  //   console.log(userMail?.email);
   const handleFormat = (formatStyle) => {
     setFormat(formatStyle);
   };
-  console.log(format);
+  // console.log(format);
   return (
     <div>
       <div className="flex justify-between">
@@ -89,20 +90,20 @@ const AllBooks = () => {
                         >
                           Quantity
                         </th>
-                        {
-                            userMail.email == email && <th
+                        {userMail.email == email && (
+                          <th
                             scope="col"
                             className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                           >
                             Action
                           </th>
-                        }
+                        )}
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                      {
-                        allBooks.map((book,idx)=> <TableRow key={idx} aBook={book}></TableRow>)
-                      }
+                      {allBooks.map((book, idx) => (
+                        <TableRow key={idx} aBook={book}></TableRow>
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -110,6 +111,13 @@ const AllBooks = () => {
             </div>
           </div>
         </section>
+      )}
+      {format === "card" && (
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {allBooks.map((book, idx) => (
+            <BookCard key={idx} singleBook={book}></BookCard>
+          ))}
+        </div>
       )}
     </div>
   );

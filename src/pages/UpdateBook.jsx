@@ -1,6 +1,11 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import { useLoaderData, useNavigate } from "react-router-dom";
 const UpdateBook = () => {
+  const loadedBook = useLoaderData();
+  const navigate = useNavigate();
+  // console.log(loadedBook);
   const {
     register,
     handleSubmit,
@@ -9,7 +14,19 @@ const UpdateBook = () => {
   } = useForm();
 
   const handleUpdateBook = data =>{
-    console.log(data);
+    // console.log(data);
+    axios.put(`http://localhost:5000/addBooks/${loadedBook._id}`,data)
+    .then(res => {
+      console.log(res.data);
+      if (res.data.modifiedCount) {
+        toast.success("Book Data Updated");
+        setTimeout(() => {
+          navigate("/allBooks");
+        }, 1000);
+      }else{
+        toast.error("Nothing Changed")
+      }
+    })
   }
 
 
@@ -29,6 +46,7 @@ const UpdateBook = () => {
                 type="text"
                 {...register("image")}
                 name="image"
+                defaultValue={loadedBook.image}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Enter Image URL"
               />
@@ -42,21 +60,9 @@ const UpdateBook = () => {
                 type="text"
                 {...register("book")}
                 name="book"
+                defaultValue={loadedBook.book}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Write Book Name"
-              />
-              
-            </div>
-            <div className="w-full">
-              <label className="block mb-1 text-lg font-semibold text-white">
-                Book Quantity
-              </label>
-              <input
-                type="text"
-                {...register("quantity")}
-                name="quantity"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Number Of Book"
               />
               
             </div>
@@ -68,6 +74,7 @@ const UpdateBook = () => {
                 type="text"
                 {...register("author")}
                 name="author"
+                defaultValue={loadedBook.author}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Write Author Name"
               />
@@ -80,6 +87,7 @@ const UpdateBook = () => {
               <select
                 className="select select-bordered w-full"
                 {...register("selectOption")}
+                defaultValue={loadedBook.selectOption}
               >
                 <option value="0" disabled selected>
                   Select Category
@@ -102,31 +110,19 @@ const UpdateBook = () => {
                 type="text"
                 {...register("rating")}
                 name="rating"
+                defaultValue={loadedBook.rating}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Book Rating (1-5)"
               />
               
             </div>
-            <div className="sm:col-span-2">
-              <label className="block mb-1 text-lg font-semibold text-white">
-                Description
-              </label>
-              <textarea
-                name="bookDscription"
-                {...register("bookDescription")}
-                rows="8"
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="write about the book"
-              ></textarea>
-              
-            </div>
-          </div>
           <button
             type="submit"
-            className="btn btn-wide mx-auto flex items-center px-5 py-1 mt-4 sm:mt-6 text-base text-gray-400 bg-slate-900 font-medium text-center rounded-lg"
+            className="btn w-full mx-auto flex items-center px-5 py-1 mt-4 sm:mt-6 text-base text-gray-400 bg-slate-900 font-medium text-center rounded-lg"
           >
             Book
           </button>
+          </div>
         </form>
         <Toaster position="top-center" reverseOrder={false} />
       </div>
