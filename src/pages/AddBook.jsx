@@ -160,7 +160,6 @@ const AddBook = () => {
                 </option>
                 <option value="Thriller">Thriller</option>
                 <option value="History">History</option>
-                <option value="History">History</option>
                 <option value="Drama">Drama</option>
                 <option value="Novel">Novel</option>
                 <option value="Fiction">Fiction</option>
