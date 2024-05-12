@@ -113,7 +113,7 @@ const AllBooks = () => {
         </section>
       )}
       {format === "card" && (
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-5 md:gap-y-10">
           {allBooks.map((book, idx) => (
             <BookCard key={idx} singleBook={book}></BookCard>
           ))}
