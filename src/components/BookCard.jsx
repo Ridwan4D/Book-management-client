@@ -5,7 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { FaBookOpen } from "react-icons/fa6";
 const BookCard = ({ singleBook }) => {
   const { user } = useContext(AuthContext);
-  console.log(singleBook);
+  // console.log(singleBook);
   return (
     <div>
       <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">

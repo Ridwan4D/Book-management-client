@@ -18,7 +18,7 @@ const Slid = ({heading,description,img}) => {
 
               <div className="flex flex-col mt-6 space-y-3 lg:space-y-0 lg:flex-row">
                 <Link
-                to='/allBook'
+                to='/allBooks'
                   className="block px-5 py-2 text-sm font-bold tracking-wider text-center text-white transition-colors duration-300 transform bg-orange-400 rounded-md hover:bg-gray-700"
                 >
                   All Book

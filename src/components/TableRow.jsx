@@ -23,28 +23,28 @@ const TableRow = ({ aBook }) => {
         </div>
       </td>
 
-      <td className="px-4 py-4 text-lg font-semibold whitespace-nowrap">
+      <td className="px-10 md:px-4 py-4 text-lg font-semibold whitespace-nowrap">
         {book}
       </td>
-      <td className="px-4 py-4 text-base font-semibold whitespace-nowrap">
+      <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
         {author}
       </td>
-      <td className="px-4 py-4 text-base font-semibold whitespace-nowrap">
+      <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
         {selectOption}
       </td>
-      <td className="px-4 py-4 text-base font-semibold whitespace-nowrap">
+      <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
         <Rating
           initialRating={parseInt(rating)}
-          emptySymbol={<img src="empty-star.png" className="icon h-8" />}
+          emptySymbol={<img src="empty-star.png" className="icon h-4 md:h-8" />}
           fullSymbol={<img src="full.jpeg" className="icon" />}
           readonly
         />
       </td>
-      <td className="px-4 py-4 text-base font-semibold whitespace-nowrap">
-        {quantity}
+      <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
+        {quantity} P
       </td>
       {user.email === email && (
-        <td className="px-4 py-4 text-sm whitespace-nowrap">
+        <td className="px-10 md:px-4 py-4 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-6">
             <Link to={`/updateBook/${_id}`} className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
               <svg

@@ -4,7 +4,7 @@ import { Nav } from "../components/Nav";
 
 const MainLayout = () => {
     return (
-        <div className="max-w-7xl mx-auto">
+        <div className="px-2 max-w-7xl mx-auto">
             {/* header */}
             <Nav></Nav>
             {/* outlet */}

@@ -47,7 +47,7 @@ export const Nav = () => {
   };
   return (
     <div className="bg-orange-400 mb-10" id="navActive">
-      <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <div className="px-4 py-1 md:py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative grid items-center grid-cols-2 lg:grid-cols-3">
           <ul className="items-center hidden space-x-3 text-white text-lg font-bold lg:flex font-quick">
             {navLinks}
@@ -125,7 +125,7 @@ export const Nav = () => {
               </li>
             )}
           </ul>
-          <div className="ml-auto lg:hidden">
+          <div className="ml-auto lg:hidden z-50">
             <button
               aria-label="Open Menu"
               title="Open Menu"
