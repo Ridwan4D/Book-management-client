@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Rating from "react-rating";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaBookOpen } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 const BookCard = ({ singleBook }) => {
   const { user } = useContext(AuthContext);
   // console.log(singleBook);
@@ -24,7 +25,7 @@ const BookCard = ({ singleBook }) => {
 
         <div className="px-6 py-2">
           <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
-           Category: {singleBook.selectOption}
+           Category: {singleBook.bookCategory}
           </h1>
 
           <p className=" text-xl text-gray-700 dark:text-gray-400">
@@ -41,6 +42,9 @@ const BookCard = ({ singleBook }) => {
             <div>
               {user.email === singleBook.email && <button className="py-1 px-4 font-semibold text-white rounded-md bg-orange-400">Update</button>}
             </div>
+          </div>
+          <div className="mt-5">
+            <Link to={`/details/${singleBook._id}`} className="btn w-full bg-white border-2 border-orange-400">View Details</Link>
           </div>
         </div>
       </div>

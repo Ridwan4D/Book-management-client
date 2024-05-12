@@ -22,7 +22,7 @@ const AddBook = () => {
       bookDescription,
       quantity,
       rating,
-      selectOption,
+      bookCategory,
       author,
     } = data;
     const bookInfo = {
@@ -31,7 +31,7 @@ const AddBook = () => {
       bookDescription,
       quantity,
       rating,
-      selectOption,
+      bookCategory,
       author,
       email,
     };
@@ -150,7 +150,7 @@ const AddBook = () => {
               </label>
               <select
                 className="select select-bordered w-full"
-                {...register("selectOption", {
+                {...register("bookCategory", {
                   validate: (value) => value !== "0",
                   required: { value: true, message: "This field is required" },
                 })}
@@ -167,9 +167,9 @@ const AddBook = () => {
                 <option value="Other">Other</option>
               </select>
               <span>
-                {errors.selectOption && (
+                {errors.bookCategory && (
                   <p className="text-sm text-red-600 font-bold">
-                    {errors.selectOption.message}
+                    {errors.bookCategory.message}
                   </p>
                 )}
               </span>

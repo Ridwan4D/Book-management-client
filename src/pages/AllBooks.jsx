@@ -5,7 +5,6 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import TableRow from "../components/TableRow";
 import BookCard from "../components/BookCard";
-import axios from "axios";
 
 const AllBooks = () => {
   const { user } = useContext(AuthContext);
@@ -108,6 +107,12 @@ const AllBooks = () => {
                           className="px-10 md:px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                         >
                           Quantity
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-10 md:px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        >
+                          Details
                         </th>
                         {userMail?.email == user.email && (
                           <th

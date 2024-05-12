@@ -86,8 +86,8 @@ const UpdateBook = () => {
               </label>
               <select
                 className="select select-bordered w-full"
-                {...register("selectOption")}
-                defaultValue={loadedBook.selectOption}
+                {...register("bookCategory")}
+                defaultValue={loadedBook.bookCategory}
               >
                 <option value="0" disabled selected>
                   Select Category

@@ -9,6 +9,7 @@ import SecureRoute from "./SecureRoute";
 import AllBooks from "../pages/AllBooks";
 import BorrowedBooks from "../pages/BorrowedBooks";
 import UpdateBook from "../pages/UpdateBook";
+import Details from "../pages/Details";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,15 @@ const router = createBrowserRouter([
           </SecureRoute>
         ),
         loader: () => fetch("http://localhost:5000/allBooks"),
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <SecureRoute>
+            <Details />
+          </SecureRoute>
+        ),
+        loader: () => fetch(`http://localhost:5000/allBooks`),
       },
       {
         path: "/borrowedBook",

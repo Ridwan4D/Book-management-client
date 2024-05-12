@@ -3,14 +3,16 @@ import Rating from "react-rating";
 import { AuthContext } from "../providers/AuthProvider";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { FcViewDetails } from "react-icons/fc";
+import { Tooltip } from "react-tooltip";
 
 const TableRow = ({ aBook }) => {
   const { user } = useContext(AuthContext);
   // console.log(user.email);
-//   console.log(aBook);
-  const { _id, image, book, author, rating, quantity, selectOption, email } =
+  //   console.log(aBook);
+  const { _id, image, book, author, rating, quantity, bookCategory, email } =
     aBook;
-    // console.log(_id)
+  // console.log(_id)
   return (
     <tr>
       <td className="px-10 py-3.5 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -30,7 +32,7 @@ const TableRow = ({ aBook }) => {
         {author}
       </td>
       <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
-        {selectOption}
+        {bookCategory}
       </td>
       <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
         <Rating
@@ -43,17 +45,25 @@ const TableRow = ({ aBook }) => {
       <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
         {quantity} P
       </td>
+      <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
+        <Link to={`/details/${_id}`}>
+          <FcViewDetails className="h-6 w-6 my-anchor-element"/>
+        </Link>
+      </td>
       {user.email === email && (
         <td className="px-10 md:px-4 py-4 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-6">
-            <Link to={`/updateBook/${_id}`} className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+            <Link
+              to={`/updateBook/${_id}`}
+              className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-5 h-5 my-anchor-elements"
               >
                 <path
                   strokeLinecap="round"
@@ -65,6 +75,12 @@ const TableRow = ({ aBook }) => {
           </div>
         </td>
       )}
+      <Tooltip anchorSelect=".my-anchor-element" place="right">
+          Details
+        </Tooltip>
+        <Tooltip anchorSelect=".my-anchor-elements" place="right">
+          Edit
+        </Tooltip>
     </tr>
   );
 };
