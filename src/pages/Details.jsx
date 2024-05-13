@@ -17,9 +17,9 @@ const Details = () => {
   const day = String(borrowDate.getDate()).padStart(2, "0");
   const month = String(borrowDate.getMonth() + 1).padStart(2, "0");
   const year = borrowDate.getFullYear();
-  borrowDate = `${month}/${day}/${year}`;
+  borrowDate = `${year}/${month}/${day}`;
   // console.log(today);
-  const {
+  let {
     _id,
     image,
     book,
@@ -37,6 +37,7 @@ const Details = () => {
       toast.error('Invalid Date')
       return
     }
+    quantity = parseInt(quantity) - 1
     const bookInfo = {
       image,
       book,
@@ -47,7 +48,8 @@ const Details = () => {
       email,
       displayName,
       borrowDate,
-      returnDate
+      returnDate,
+      idInAllBooks: _id
     };
     axios.post("http://localhost:5000/addBorrowBooks", bookInfo).then((res) => {
       // console.log(res.data);
