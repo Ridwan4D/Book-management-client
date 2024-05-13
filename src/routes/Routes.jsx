@@ -10,6 +10,7 @@ import AllBooks from "../pages/AllBooks";
 import BorrowedBooks from "../pages/BorrowedBooks";
 import UpdateBook from "../pages/UpdateBook";
 import Details from "../pages/Details";
+import BookByCategory from "../pages/BookByCategory";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,15 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/bookOfCategory/:bookCategory",
+        element: (
+          <SecureRoute>
+            <BookByCategory />
+          </SecureRoute>
+        ),
+        loader: ()=> fetch("http://localhost:5000/allBooks")
       },
     ],
   },
