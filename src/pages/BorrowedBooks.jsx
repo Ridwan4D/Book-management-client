@@ -17,7 +17,7 @@ const BorrowedBooks = () => {
   return (
     <div>
       <h2 className="mb-8 underline text-4xl font-bold dark:text-white">
-        Add Book
+        Your Book Reading List
       </h2>
       {
         books.map((book,idx)=> <BorrowedCard key={idx} singleBook={book}></BorrowedCard>)

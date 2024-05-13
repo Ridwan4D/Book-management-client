@@ -7,18 +7,18 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const Details = () => {
   const { user } = useContext(AuthContext);
-  const { email } = user;
+  const { email,displayName } = user;
   const { id } = useParams();
   const bookDetails = useLoaderData();
   const [disableBtn, setDisableBtn] = useState("");
   const navigate = useNavigate();
   const bookDetail = bookDetails.find((book) => book._id == id);
-  let today = new Date();
-  const day = String(today.getDate()).padStart(2, "0");
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const year = today.getFullYear();
-  today = `${month} / ${day} / ${year}`;
-  console.log(today);
+  let borrowDate = new Date();
+  const day = String(borrowDate.getDate()).padStart(2, "0");
+  const month = String(borrowDate.getMonth() + 1).padStart(2, "0");
+  const year = borrowDate.getFullYear();
+  borrowDate = `${month}/${day}/${year}`;
+  // console.log(today);
   const {
     _id,
     image,
@@ -29,19 +29,26 @@ const Details = () => {
     rating,
     bookDescription,
   } = bookDetail;
-  const bookInfo = {
-    image,
-    book,
-    quantity,
-    author,
-    bookCategory,
-    rating,
-    email,
-    today,
-  };
 
-  const handleBorrowBook = () => {
-    // const disableBtn = e.target;
+  const handleBorrowBook = (e) => {
+    e.preventDefault();
+    const returnDate = e.target.date.value;
+    if(returnDate === ""){
+      toast.error('Invalid Date')
+      return
+    }
+    const bookInfo = {
+      image,
+      book,
+      quantity,
+      author,
+      bookCategory,
+      rating,
+      email,
+      displayName,
+      borrowDate,
+      returnDate
+    };
     axios.post("http://localhost:5000/addBorrowBooks", bookInfo).then((res) => {
       // console.log(res.data);
       if (res.data.insertedId) {
@@ -104,13 +111,62 @@ const Details = () => {
                 <span className="font-bold">Description: </span>{" "}
                 {bookDescription} P
               </p>
-              <button
+              {/* <button
                 onClick={handleBorrowBook}
                 disabled={quantity == 0 || disableBtn == bookDetail.image}
                 className="btn w-full border-2 border-orange-300 bg-white mt-5 font-extrabold"
               >
                 Borrow
+              </button> */}
+
+              {/* You can open the modal using document.getElementById('ID').showModal() method */}
+              <button
+                className="btn w-full border-2 border-orange-300 bg-white mt-5 font-extrabold"
+                disabled={quantity == 0 || disableBtn == bookDetail.image}
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+              >
+                Borrow
               </button>
+              <dialog id="my_modal_3" className="modal">
+                <div className="modal-box">
+                  <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                      ✕
+                    </button>
+                  </form>
+                  <form onSubmit={handleBorrowBook}>
+                    <div className="space-y-2">
+                      <label className="block mb-1 text-lg font-semibold text-orange-400">
+                        Select Return Date
+                      </label>
+                      <input
+                        type="date"
+                        name="date"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        // placeholder=""
+                      />
+                      <input
+                        type="text"
+                        name="name"
+                        defaultValue={displayName}
+                        disabled
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      />
+                      <input
+                        type="text"
+                        name="name"
+                        defaultValue={email}
+                        disabled
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      />
+                    </div>
+                    <button className="btn bg-orange-400 text-white w-full mt-5">submit</button>
+                  </form>
+                </div>
+              </dialog>
               {quantity == 0 && (
                 <p className="text-sm text-blue-600 font-semibold">
                   Out fo Stock
