@@ -25,11 +25,14 @@ const BookCard = ({ singleBook }) => {
 
         <div className="px-6 py-2">
           <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
-           Category: {singleBook.bookCategory}
+            Category: {singleBook.bookCategory}
           </h1>
 
           <p className=" text-xl text-gray-700 dark:text-gray-400">
-           Author: {singleBook.author}
+            Author: {singleBook.author}
+          </p>
+          <p className=" text-xl text-gray-700 dark:text-gray-400">
+            Available: {singleBook.quantity}
           </p>
 
           <div className="flex justify-between items-center">
@@ -40,11 +43,20 @@ const BookCard = ({ singleBook }) => {
               readonly
             />
             <div>
-              {user.email === singleBook.email && <button className="py-1 px-4 font-semibold text-white rounded-md bg-orange-400">Update</button>}
+              {user.email === singleBook.email && (
+                <button className="py-1 px-4 font-semibold text-white rounded-md bg-orange-400">
+                  Update
+                </button>
+              )}
             </div>
           </div>
           <div className="mt-5">
-            <Link to={`/details/${singleBook._id}`} className="btn w-full bg-white border-2 border-orange-400">View Details</Link>
+            <Link
+              to={`/details/${singleBook._id}`}
+              className="btn w-full bg-white border-2 border-orange-400"
+            >
+              View Details
+            </Link>
           </div>
         </div>
       </div>

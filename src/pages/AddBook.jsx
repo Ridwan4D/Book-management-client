@@ -25,6 +25,10 @@ const AddBook = () => {
       bookCategory,
       author,
     } = data;
+    if(parseInt(quantity) < 0){
+      toast.error("Invalid Quantity Number")
+      return;
+    }
     const bookInfo = {
       image,
       book,
@@ -107,7 +111,7 @@ const AddBook = () => {
                 Book Quantity
               </label>
               <input
-                type="text"
+                type="number"
                 {...register("quantity", {
                   required: { value: true, message: "This field is required" },
                 })}

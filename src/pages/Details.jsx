@@ -17,8 +17,8 @@ const Details = () => {
   const day = String(today.getDate()).padStart(2, "0");
   const month = String(today.getMonth() + 1).padStart(2, "0");
   const year = today.getFullYear();
-  today = month + "/" + day + "/" + year;
-  //   console.log(today);
+  today = `${month} / ${day} / ${year}`;
+  console.log(today);
   const {
     _id,
     image,
@@ -36,7 +36,6 @@ const Details = () => {
     author,
     bookCategory,
     rating,
-    bookDescription,
     email,
     today,
   };
@@ -53,23 +52,23 @@ const Details = () => {
       }
     });
 
-    axios.patch(`http://localhost:5000/addBooks/${_id}`,bookInfo)
-    .then(res => {
+    axios
+      .patch(`http://localhost:5000/addBooks/${_id}`, bookInfo)
+      .then((res) => {
         console.log(res.data);
-    })
-
+      });
   };
   axios
     .get(`http://localhost:5000/allBorrowBooks/${user?.email}`)
     .then((res) => {
-    //   console.log(bookDetail.image);
+      //   console.log(bookDetail.image);
       res.data.find((book) => {
         if (book.image == bookDetail.image) {
           setDisableBtn(book.image);
         }
       });
     });
-//   console.log(disableBtn);
+  //   console.log(disableBtn);
 
   return (
     <div>
@@ -112,9 +111,11 @@ const Details = () => {
               >
                 Borrow
               </button>
-              {
-                quantity == 0 && <p className="text-sm text-blue-600 font-semibold">Out fo Stock</p>
-              }
+              {quantity == 0 && (
+                <p className="text-sm text-blue-600 font-semibold">
+                  Out fo Stock
+                </p>
+              )}
               <Link
                 to="/allBooks"
                 className="btn w-full border-2 border-orange-300 bg-white mt-5 font-extrabold"
