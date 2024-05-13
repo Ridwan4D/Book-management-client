@@ -60,7 +60,7 @@ const Details = () => {
       returnDate,
       idInAllBooks: _id
     };
-    axios.post("http://localhost:5000/addBorrowBooks", bookInfo).then((res) => {
+    axios.post("https://rt-library-management-server.vercel.app/addBorrowBooks", bookInfo).then((res) => {
       // console.log(res.data);
       if (res.data.insertedId) {
         toast.success("Book Borrowed");
@@ -71,13 +71,13 @@ const Details = () => {
     });
 
     axios
-      .patch(`http://localhost:5000/addBooks/${_id}`, bookInfo)
+      .patch(`https://rt-library-management-server.vercel.app/addBooks/${_id}`, bookInfo)
       .then((res) => {
         console.log(res.data);
       });
   };
   axios
-    .get(`http://localhost:5000/allBorrowBooks/${user?.email}`)
+    .get(`https://rt-library-management-server.vercel.app/allBorrowBooks/${user?.email}`)
     .then((res) => {
        setBorrowBooks(res.data)
       res.data.find((book) => {

@@ -10,7 +10,7 @@ const BorrowedBooks = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/allBorrowBooks/${user?.email}`)
+      .get(`https://rt-library-management-server.vercel.app/allBorrowBooks/${user?.email}`)
       .then((res) => {
         // console.log(res.data);
         setBooks(res.data);
@@ -18,7 +18,7 @@ const BorrowedBooks = () => {
   }, [user.email]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/allBooks").then((res) => {
+    axios.get("https://rt-library-management-server.vercel.app/allBooks").then((res) => {
       setAllBooks(res.data);
     });
   }, []);

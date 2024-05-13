@@ -19,14 +19,14 @@ const Login = () => {
   const handleAppSignIn = (provider) => {
     singUpWithApp(provider)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         toast.success("Logged In");
         setTimeout(() => {
           navigate(location?.state ? location.state : "/");
         }, 1000);
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 
@@ -40,14 +40,14 @@ const Login = () => {
 
     loginUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         toast.success("Logged In");
         setTimeout(() => {
           navigate(location?.state ? location.state : "/");
         }, 1000);
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
         if (error.message == "Firebase: Error (auth/invalid-credential).") {
           setLoginErr("Invalid User or Password");
         }

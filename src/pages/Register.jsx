@@ -18,14 +18,14 @@ const Register = () => {
   const handleSignUpWithApps = (provider) => {
     singUpWithApp(provider)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         toast.success("Account Created");
         setTimeout(() => {
           navigate(location?.state ? location.state : "/");
         }, 1000);
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 
