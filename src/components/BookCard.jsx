@@ -4,7 +4,7 @@ import Rating from "react-rating";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaBookOpen } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-const BookCard = ({ singleBook }) => {
+const BookCard = ({ singleBook,access }) => {
   const { user } = useContext(AuthContext);
   // console.log(singleBook);
   return (
@@ -43,7 +43,7 @@ const BookCard = ({ singleBook }) => {
               readonly
             />
             <div>
-              {user.email === singleBook.email && (
+              {access && (
                 <button className="py-1 px-4 font-semibold text-white rounded-md bg-orange-400">
                   Update
                 </button>
@@ -66,5 +66,6 @@ const BookCard = ({ singleBook }) => {
 
 BookCard.propTypes = {
   singleBook: PropType.object,
+  access: PropType.bool,
 };
 export default BookCard;

@@ -1,16 +1,12 @@
 import PropType from "prop-types";
 import Rating from "react-rating";
-import { AuthContext } from "../providers/AuthProvider";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FcViewDetails } from "react-icons/fc";
 import { Tooltip } from "react-tooltip";
 
-const TableRow = ({ aBook }) => {
-  const { user } = useContext(AuthContext);
-  // console.log(user.email);
+const TableRow = ({ aBook,access }) => {
   //   console.log(aBook);
-  const { _id, image, book, author, rating, quantity, bookCategory, email } =
+  const { _id, image, book, author, rating, quantity, bookCategory } =
     aBook;
   // console.log(_id)
   return (
@@ -51,7 +47,7 @@ const TableRow = ({ aBook }) => {
         </Link>
       </td>
       <td className="px-10 md:px-4 py-4 text-sm whitespace-nowrap">
-        {user.email === email && (
+        {access && (
           <div className="flex items-center gap-x-6">
             <Link
               to={`/updateBook/${_id}`}
@@ -86,6 +82,7 @@ const TableRow = ({ aBook }) => {
 };
 TableRow.propTypes = {
   aBook: PropType.object,
+  access: PropType.bool,
 };
 
 export default TableRow;

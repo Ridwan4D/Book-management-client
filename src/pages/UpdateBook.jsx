@@ -120,7 +120,7 @@ const UpdateBook = () => {
             type="submit"
             className="btn w-full mx-auto flex items-center px-5 py-1 mt-4 sm:mt-6 text-base text-gray-400 bg-slate-900 font-medium text-center rounded-lg"
           >
-            Book
+            Update Book
           </button>
           </div>
         </form>

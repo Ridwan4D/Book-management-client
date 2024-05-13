@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaTableCellsLarge } from "react-icons/fa6";
 import { MdTableRows } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
@@ -11,11 +11,19 @@ const AllBooks = () => {
   const [format, setFormat] = useState("table");
   const allBooks = useLoaderData();
   const [books, setBooks] = useState(allBooks);
+  const [access, setAccess] = useState(false);
   // console.log(books);
   const userMail = books.find((book) => book.email === user.email);
   const handleFormat = (formatStyle) => {
     setFormat(formatStyle);
   };
+
+  useEffect(()=>{
+    if(userMail?.email == user?.email || user.email == "librarian@gmail.com"){
+      setAccess(true);
+    }
+  },[userMail?.email, user?.email ])
+
   const handleFilter = (e) => {
   if(e.target.value === "availableBooks"){
       const availableBooks = books.filter(book => parseInt(book.quantity) > 0)
@@ -114,7 +122,7 @@ const AllBooks = () => {
                         >
                           Details
                         </th>
-                        {userMail?.email == user.email && (
+                        {access && (
                           <th
                             scope="col"
                             className="px-10 md:px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -126,7 +134,7 @@ const AllBooks = () => {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                       {books.map((book, idx) => (
-                        <TableRow key={idx} aBook={book}></TableRow>
+                        <TableRow key={idx} aBook={book} access={access}></TableRow>
                       ))}
                     </tbody>
                   </table>
@@ -139,7 +147,7 @@ const AllBooks = () => {
       {format === "card" && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-5 md:gap-y-10">
           {books.map((book, idx) => (
-            <BookCard key={idx} singleBook={book}></BookCard>
+            <BookCard key={idx} singleBook={book} access={access}></BookCard>
           ))}
         </div>
       )}
