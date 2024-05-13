@@ -1,12 +1,16 @@
 import PropType from "prop-types";
 import Rating from "react-rating";
+import { AuthContext } from "../providers/AuthProvider";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FcViewDetails } from "react-icons/fc";
 import { Tooltip } from "react-tooltip";
 
-const TableRow = ({ aBook,access }) => {
+const TableRow = ({ aBook }) => {
+  const { user } = useContext(AuthContext);
+  // console.log(user.email);
   //   console.log(aBook);
-  const { _id, image, book, author, rating, quantity, bookCategory } =
+  const { _id, image, book, author, rating, quantity, bookCategory, email } =
     aBook;
   // console.log(_id)
   return (
@@ -43,11 +47,11 @@ const TableRow = ({ aBook,access }) => {
       </td>
       <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
         <Link to={`/details/${_id}`}>
-          <FcViewDetails className="h-6 w-6 my-anchor-element" />
+          <FcViewDetails className="h-6 w-6 my-anchor-element"/>
         </Link>
       </td>
-      <td className="px-10 md:px-4 py-4 text-sm whitespace-nowrap">
-        {access && (
+      {user.email === email && (
+        <td className="px-10 md:px-4 py-4 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-6">
             <Link
               to={`/updateBook/${_id}`}
@@ -69,20 +73,19 @@ const TableRow = ({ aBook,access }) => {
               </svg>
             </Link>
           </div>
-        )}
-      </td>
+        </td>
+      )}
       <Tooltip anchorSelect=".my-anchor-element" place="right">
-        Details
-      </Tooltip>
-      <Tooltip anchorSelect=".my-anchor-elements" place="right">
-        Edit
-      </Tooltip>
+          Details
+        </Tooltip>
+        <Tooltip anchorSelect=".my-anchor-elements" place="right">
+          Edit
+        </Tooltip>
     </tr>
   );
 };
 TableRow.propTypes = {
   aBook: PropType.object,
-  access: PropType.bool,
 };
 
 export default TableRow;
