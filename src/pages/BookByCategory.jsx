@@ -15,7 +15,7 @@ const BookByCategory = () => {
   },[bookCategory])
   return <div>
     <h2 className="text-3xl font-bold underline">All Books of {bookCategory}</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-2">
         {
             books.map((book,idx)=> <CardOfBookByCategory key={idx} singleBook={book}></CardOfBookByCategory>)
         }

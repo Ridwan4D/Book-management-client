@@ -1,7 +1,7 @@
 const HomeFaq = () => {
   return (
     <div>
-      <div className="text-center my-10">
+      <div className="md:text-center my-10">
         <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
           FAQ
         </h1>

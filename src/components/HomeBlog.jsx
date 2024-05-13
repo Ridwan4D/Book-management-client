@@ -3,7 +3,7 @@ const HomeBlog = () => {
     <div>
       <section className="bg-white dark:bg-gray-900">
         <div className="container px-6 py-10 mx-auto">
-          <div className="text-center">
+          <div className="md:text-center">
             <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
               From the blog
             </h1>

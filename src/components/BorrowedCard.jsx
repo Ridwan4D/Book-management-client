@@ -32,21 +32,21 @@ const BorrowedCard = ({ singleBook, setBooks, books,allBooks }) => {
 
   return (
     <div>
-      <section className="border-2 border-orange-400 rounded-md px-6 py-2 dark:bg-gray-100 dark:text-gray-800">
+      <section className="border-2 border-orange-400 rounded-md md:px-6 py-2 dark:bg-gray-100 dark:text-gray-800">
         <div className="container flex flex-col mx-auto lg:flex-row">
           <div className="w-full md:w-auto flex items-center">
-            <img src={image} alt="" width="200px" />
+            <img src={image} alt="" width="200px" className="mx-auto" />
           </div>
           <div className="flex flex-col w-full p-6 lg:w-2/3 md:p-8 lg:p-12">
-            <FaBook className="h-10 w-10 mb-2" />
+            <FaBook className="h-10 w-10 md:mb-2" />
             <h2 className="text-3xl font-semibold leading-none">{book}</h2>
-            <p className="mt-1 mb-2 text-xl text-slate-400 font-semibold">
+            <p className="mt-1 md:mb-2 text-xl text-slate-400 font-semibold">
               {bookCategory}
             </p>
-            <p className="mt-1 mb-3 text-2xl text-slate-900 font-semibold">
+            <p className="mt-1 md:mb-3 text-2xl text-slate-900 font-semibold">
               {author}
             </p>
-            <div className="flex flex-col md:flex-row gap-10">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-10">
               <div className="badge badge-info gap-2 text-white font-semibold px-5 py-4">
                 <span>Borrow On: </span>
                 {borrowDate}
