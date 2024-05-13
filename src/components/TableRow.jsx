@@ -47,11 +47,11 @@ const TableRow = ({ aBook }) => {
       </td>
       <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
         <Link to={`/details/${_id}`}>
-          <FcViewDetails className="h-6 w-6 my-anchor-element"/>
+          <FcViewDetails className="h-6 w-6 my-anchor-element" />
         </Link>
       </td>
-      {user.email === email && (
-        <td className="px-10 md:px-4 py-4 text-sm whitespace-nowrap">
+      <td className="px-10 md:px-4 py-4 text-sm whitespace-nowrap">
+        {user.email === email && (
           <div className="flex items-center gap-x-6">
             <Link
               to={`/updateBook/${_id}`}
@@ -73,14 +73,14 @@ const TableRow = ({ aBook }) => {
               </svg>
             </Link>
           </div>
-        </td>
-      )}
+        )}
+      </td>
       <Tooltip anchorSelect=".my-anchor-element" place="right">
-          Details
-        </Tooltip>
-        <Tooltip anchorSelect=".my-anchor-elements" place="right">
-          Edit
-        </Tooltip>
+        Details
+      </Tooltip>
+      <Tooltip anchorSelect=".my-anchor-elements" place="right">
+        Edit
+      </Tooltip>
     </tr>
   );
 };

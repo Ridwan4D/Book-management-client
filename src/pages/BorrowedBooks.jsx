@@ -7,6 +7,7 @@ const BorrowedBooks = () => {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
   const [allBooks, setAllBooks] = useState([]);
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/allBorrowBooks/${user?.email}`)
@@ -16,12 +17,11 @@ const BorrowedBooks = () => {
       });
   }, [user.email]);
 
-  useEffect(()=>{
-    axios.get("http://localhost:5000/allBooks")
-    .then(res => {
-        setAllBooks(res.data)
-    })
-},[])
+  useEffect(() => {
+    axios.get("http://localhost:5000/allBooks").then((res) => {
+      setAllBooks(res.data);
+    });
+  }, []);
   return (
     <div>
       <h2 className="mb-8 underline text-4xl font-bold dark:text-white">
@@ -29,7 +29,13 @@ const BorrowedBooks = () => {
       </h2>
       <div className="space-y-5">
         {books.map((book, idx) => (
-          <BorrowedCard key={idx} singleBook={book} setBooks={setBooks} books={books} allBooks={allBooks}></BorrowedCard>
+          <BorrowedCard
+            key={idx}
+            singleBook={book}
+            setBooks={setBooks}
+            books={books}
+            allBooks={allBooks}
+          ></BorrowedCard>
         ))}
       </div>
     </div>

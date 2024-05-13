@@ -11,6 +11,7 @@ const Details = () => {
   const { id } = useParams();
   const bookDetails = useLoaderData();
   const [disableBtn, setDisableBtn] = useState("");
+  const [borrowBooks, setBorrowBooks] = useState([]);
   const navigate = useNavigate();
   const bookDetail = bookDetails.find((book) => book._id == id);
   let borrowDate = new Date();
@@ -29,6 +30,14 @@ const Details = () => {
     rating,
     bookDescription,
   } = bookDetail;
+
+  const handleBorrowBtn = ()=>{
+    if(borrowBooks.length >= 3){
+      toast("You can borrow maximum 3 books")
+      return;
+    }
+    document.getElementById("my_modal_3").showModal()
+  }
 
   const handleBorrowBook = (e) => {
     e.preventDefault();
@@ -70,10 +79,10 @@ const Details = () => {
   axios
     .get(`http://localhost:5000/allBorrowBooks/${user?.email}`)
     .then((res) => {
-      //   console.log(bookDetail.image);
+       setBorrowBooks(res.data)
       res.data.find((book) => {
         if (book.image == bookDetail.image) {
-          setDisableBtn(book.image);
+          setDisableBtn(book);
         }
       });
     });
@@ -124,10 +133,8 @@ const Details = () => {
               {/* You can open the modal using document.getElementById('ID').showModal() method */}
               <button
                 className="btn w-full border-2 border-orange-300 bg-white mt-5 font-extrabold"
-                disabled={quantity == 0 || disableBtn == bookDetail.image}
-                onClick={() =>
-                  document.getElementById("my_modal_3").showModal()
-                }
+                disabled={quantity == 0 || disableBtn.image == bookDetail.image}
+                onClick={handleBorrowBtn}
               >
                 Borrow
               </button>
