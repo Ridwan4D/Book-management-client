@@ -11,6 +11,7 @@ import BorrowedBooks from "../pages/BorrowedBooks";
 import UpdateBook from "../pages/UpdateBook";
 import Details from "../pages/Details";
 import BookByCategory from "../pages/BookByCategory";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/addBook",
