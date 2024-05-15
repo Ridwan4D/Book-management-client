@@ -41,7 +41,7 @@ const AddBook = () => {
     };
     // console.log(bookInfo);
 
-    fetch("https://rt-library-management-server.vercel.app/addBooks", {
+    fetch("http://localhost:5000/addBooks", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(bookInfo),
@@ -53,7 +53,7 @@ const AddBook = () => {
         setTimeout(() => {
           navigate("/allBooks");
         }, 1000);
-      });
+      })
   };
 
   return (

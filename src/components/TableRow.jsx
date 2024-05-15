@@ -26,7 +26,7 @@ const TableRow = ({ aBook }) => {
       </td>
 
       <td className="px-10 md:px-4 py-4 text-lg font-semibold whitespace-nowrap">
-        {book}
+        {book.slice(0,20)}
       </td>
       <td className="px-10 md:px-4 py-4 text-base font-semibold whitespace-nowrap">
         {author}

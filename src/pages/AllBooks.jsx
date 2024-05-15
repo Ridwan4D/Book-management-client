@@ -12,7 +12,7 @@ const AllBooks = () => {
   const allBooks = useLoaderData();
   // console.log(allBooks);
   const [books, setBooks] = useState(allBooks);
-  // console.log(books);
+  console.log(books);
   const userMail = books.find((book) => book.email === user.email);
   const handleFormat = (formatStyle) => {
     setFormat(formatStyle);

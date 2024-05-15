@@ -7,12 +7,12 @@ const BorrowedCard = ({ singleBook, setBooks, books,allBooks }) => {
     singleBook;
     // console.log(allBooks);
     const bookDetail = allBooks.find((book) => book._id == idInAllBooks);
-    console.log(bookDetail);
+    // console.log(bookDetail);
 
 
 
   const handleReturnBook = (_id) => {
-    axios.delete(`https://rt-library-management-server.vercel.app/allBorrowBooks/${_id}`).then((res) => {
+    axios.delete(`http://localhost:5000/allBorrowBooks/${_id}`).then((res) => {
     //   console.log(res.data);
       if (res.data.deletedCount) {
         toast.success("Book Returned");
@@ -24,7 +24,7 @@ const BorrowedCard = ({ singleBook, setBooks, books,allBooks }) => {
     quantity = parseInt(quantity) + 1
     const bookInfo = {quantity}
     axios
-      .patch(`https://rt-library-management-server.vercel.app/addBooks/${bookDetail._id}`, bookInfo)
+      .patch(`http://localhost:5000/addBooks/${bookDetail._id}`, bookInfo)
       .then((res) => {
         console.log(res.data);
       });
