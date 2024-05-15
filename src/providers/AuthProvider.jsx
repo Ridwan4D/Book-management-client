@@ -15,6 +15,8 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [categories,setCategories]=useState([]);
+
 
   // register user with email pass
   const registerUser = (email, password) => {
@@ -53,13 +55,13 @@ const AuthProvider = ({ children }) => {
       if(currentUser){
         axios.post('https://rt-library-management-server.vercel.app/jwt',loggedUser,{withCredentials: true})
         .then(res => {
-          console.log(res.data);
+         console.log(res.data);
         })
       }
       else{
         axios.post('https://rt-library-management-server.vercel.app/logout',loggedUser,{withCredentials: true})
         .then(res => {
-          console.log(res.data);
+         console.log(res.data);
         })
       }
     });
@@ -82,6 +84,8 @@ const AuthProvider = ({ children }) => {
     loginUser,
     profileUpdate,
     logout,
+    categories,
+    setCategories
   };
   return (
     <AuthContext.Provider value={provideInfo}>{children}</AuthContext.Provider>

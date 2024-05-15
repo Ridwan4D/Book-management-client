@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+
 const Footer = () => {
+  const { categories } = useContext(AuthContext);
+  console.log(categories);
   return (
     <div className="relative mt-16 bg-orange-400 text-white">
       <svg
@@ -31,7 +37,7 @@ const Footer = () => {
                 website effortlessly to find your next favorite read, connect
                 with fellow book lovers through our community forums, and stay
                 updated on the latest releases and events. Join us in
-                celebrating the joy of reading and lifelong learning. Let's
+                celebrating the joy of reading and lifelong learning. Lets
                 embark on a journey through the pages
               </p>
             </div>
@@ -39,7 +45,7 @@ const Footer = () => {
           <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
             <div>
               <p className="font-semibold tracking-wide text-teal-accent-400">
-                Category
+                Pages
               </p>
               <ul className="mt-2 space-y-2">
                 <li>
@@ -47,7 +53,7 @@ const Footer = () => {
                     href="/"
                     className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
                   >
-                   Home
+                    Home
                   </a>
                 </li>
                 <li>
@@ -78,49 +84,23 @@ const Footer = () => {
             </div>
             <div>
               <p className="font-semibold tracking-wide text-teal-accent-400">
-                Cherry
+                Category
               </p>
               <ul className="mt-2 space-y-2">
-                <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                  >
-                    Web
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                  >
-                    eCommerce
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                  >
-                    Business
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                  >
-                    Entertainment
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/"
-                    className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400"
-                  >
-                    Portfolio
-                  </a>
-                </li>
+                {/* <p>helo</p> */}
+                {categories.map((category, idx) => {
+                  return (
+                    <li key={idx}>
+                      <Link
+                        to={`/bookOfCategory/${category.bookCategory}`}
+                        className="transition-colors text-white duration-300 text-deep-purple-50 hover:text-teal-accent-400"
+                      >
+                        {category.bookCategory}
+                        {/* {console.log(category.bookCategory)} */}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div>

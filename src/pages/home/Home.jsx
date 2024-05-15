@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import SwiperSlider from "../../components/Swiper";
 import axios from "axios";
 import BookCategoryCard from "../../components/BookCategoryCard";
 import HomeBlog from "../../components/HomeBlog";
 import HomeFaq from "../../components/HomeFaq";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Home = () => {
-    const [categories,setCategories]=useState([]);
+    const {categories,setCategories} = useContext(AuthContext)
     useEffect(()=>{
         axios.get('https://rt-library-management-server.vercel.app/allCategories')
         .then(res=>{
             // console.log(res.data);
             setCategories(res.data)
         })
-    },[])
+    },[setCategories])
     return (
         <div>
             {/* slider */}
