@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             <AllBooks />
           </SecureRoute>
         ),
-        loader: () => fetch("http://localhost:5000/allBooks",{credentials: "include"}),
+        loader: () => fetch("https://rt-library-management-server.vercel.app/allBooks",{credentials: "include"}),
       },
       {
         path: "/details/:id",
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             <Details />
           </SecureRoute>
         ),
-        loader: () => fetch(`http://localhost:5000/allBooks`),
+        loader: () => fetch(`https://rt-library-management-server.vercel.app/allBooks`,{credentials: "include"}),
       },
       {
         path: "/borrowedBook",
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         path: "/updateBook/:id",
         element: <UpdateBook></UpdateBook>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allBooks/${params.id}`),
+          fetch(`https://rt-library-management-server.vercel.app/allBooks/${params.id}`),
       },
       {
         path: "/login",
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
             <BookByCategory />
           </SecureRoute>
         ),
-        loader: ()=> fetch("http://localhost:5000/allBooks")
+        loader: ()=> fetch("https://rt-library-management-server.vercel.app/allBooks")
       },
     ],
   },

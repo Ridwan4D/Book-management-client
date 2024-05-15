@@ -9,7 +9,7 @@ import HomeFaq from "../../components/HomeFaq";
 const Home = () => {
     const [categories,setCategories]=useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:5000/allCategories')
+        axios.get('https://rt-library-management-server.vercel.app/allCategories')
         .then(res=>{
             // console.log(res.data);
             setCategories(res.data)

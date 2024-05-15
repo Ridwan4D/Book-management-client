@@ -15,7 +15,7 @@ const UpdateBook = () => {
 
   const handleUpdateBook = data =>{
     // console.log(data);
-    axios.put(`http://localhost:5000/addBooks/${loadedBook._id}`,data)
+    axios.put(`https://rt-library-management-server.vercel.app/addBooks/${loadedBook._id}`,data)
     .then(res => {
       console.log(res.data);
       if (res.data.modifiedCount) {
