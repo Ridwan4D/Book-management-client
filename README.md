@@ -21,6 +21,12 @@ This is book library site.User can borrow book for reading. If they complete rea
 - User can add own book
 - User will have personal borrow list of his/her addition
 - Slider with valuable information
+- 
+## If you want to run this project in your device
+- clone the repo.
+- also clone the backend repo.
+- download node modules.
+- and run it.
 
 
 
