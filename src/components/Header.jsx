@@ -190,7 +190,7 @@ const Header = () => {
                 ) : (
                   <Link
                     to="/updateUserProfile"
-                    className="text-start flex items-center gap-2 px-4 bg-orange-400 py-1 rounded-sm text-white"
+                    className="text-start flex items-center gap-2 px-4 bg-slate-500 py-1 rounded-sm text-white"
                   >
                     <span>Add Info</span>
                     <MdSystemUpdate />

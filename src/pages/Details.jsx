@@ -60,7 +60,7 @@ const Details = () => {
       returnDate,
       idInAllBooks: _id
     };
-    axios.post("https://rt-library-management-server.vercel.app/addBorrowBooks", bookInfo).then((res) => {
+    axios.post("${import.meta.env.VITE_API_URL}/addBorrowBooks", bookInfo).then((res) => {
       // console.log(res.data);
       if (res.data.insertedId) {
         toast.success("Book Borrowed");
@@ -71,13 +71,13 @@ const Details = () => {
     });
 
     axios
-      .patch(`https://rt-library-management-server.vercel.app/addBooks/${_id}`, bookInfo)
+      .patch(`${import.meta.env.VITE_API_URL}/addBooks/${_id}`, bookInfo)
       .then((res) => {
         console.log(res.data);
       });
   };
   axios
-    .get(`https://rt-library-management-server.vercel.app/allBorrowBooks/${user?.email}`)
+    .get(`${import.meta.env.VITE_API_URL}/allBorrowBooks/${user?.email}`)
     .then((res) => {
        setBorrowBooks(res.data)
       res.data.find((book) => {
@@ -148,7 +148,7 @@ const Details = () => {
                   </form>
                   <form onSubmit={handleBorrowBook}>
                     <div className="space-y-2">
-                      <label className="block mb-1 text-lg font-semibold text-orange-400">
+                      <label className="block mb-1 text-lg font-semibold text-slate-500">
                         Select Return Date
                       </label>
                       <input
@@ -172,7 +172,7 @@ const Details = () => {
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                       />
                     </div>
-                    <button className="btn bg-orange-400 text-white w-full mt-5">submit</button>
+                    <button className="btn bg-slate-500 text-white w-full mt-5">submit</button>
                   </form>
                 </div>
               </dialog>

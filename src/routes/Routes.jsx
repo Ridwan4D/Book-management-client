@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             <AllBooks />
           </SecureRoute>
         ),
-        loader: () => fetch("https://rt-library-management-server.vercel.app/allBooks",{credentials: "include"}),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/allBooks`,{credentials: "include"}),
       },
       {
         path: "/details/:id",
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             <Details />
           </SecureRoute>
         ),
-        loader: () => fetch(`https://rt-library-management-server.vercel.app/allBooks`,{credentials: "include"}),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/allBooks`,{credentials: "include"}),
       },
       {
         path: "/borrowedBook",
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         path: "/updateBook/:id",
         element: <UpdateBook></UpdateBook>,
         loader: ({ params }) =>
-          fetch(`https://rt-library-management-server.vercel.app/allBooks/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/allBooks/${params.id}`),
       },
       {
         path: "/login",
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
             <BookByCategory />
           </SecureRoute>
         ),
-        loader: ()=> fetch("https://rt-library-management-server.vercel.app/allBooks")
+        loader: ()=> fetch("${import.meta.env.VITE_API_URL}/allBooks")
       },
     ],
   },

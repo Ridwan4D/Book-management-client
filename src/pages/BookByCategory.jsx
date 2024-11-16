@@ -7,7 +7,7 @@ const BookByCategory = () => {
   const { bookCategory } = useParams();
   const [books,setBooks] = useState([])
   useEffect(()=>{
-    axios.get(`https://rt-library-management-server.vercel.app/bookOfCategory/${bookCategory}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/bookOfCategory/${bookCategory}`)
     .then(res => {
         // console.log(res.data);
         setBooks(res.data)

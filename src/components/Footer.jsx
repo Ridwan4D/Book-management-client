@@ -6,7 +6,7 @@ const Footer = () => {
   const { categories } = useContext(AuthContext);
   console.log(categories);
   return (
-    <div className="relative mt-16 bg-orange-400 text-white">
+    <div className="relative mt-16 bg-slate-500 text-white">
       <svg
         className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-deep-purple-accent-400"
         preserveAspectRatio="none"

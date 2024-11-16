@@ -44,7 +44,7 @@ const BookCard = ({ singleBook }) => {
             />
             <div>
               {user.email === singleBook.email && (
-                <Link to={`/updateBook/${singleBook._id}`} className="py-1 px-4 font-semibold text-white rounded-md bg-orange-400">
+                <Link to={`/updateBook/${singleBook._id}`} className="py-1 px-4 font-semibold text-white rounded-md bg-slate-500">
                   Update
                 </Link>
               )}
@@ -53,7 +53,7 @@ const BookCard = ({ singleBook }) => {
           <div className="mt-5">
             <Link
               to={`/details/${singleBook._id}`}
-              className="btn w-full bg-white border-2 border-orange-400"
+              className="btn w-full bg-white border-2 border-slate-500"
             >
               View Details
             </Link>

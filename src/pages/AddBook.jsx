@@ -41,7 +41,7 @@ const AddBook = () => {
     };
     // console.log(bookInfo);
 
-    fetch("https://rt-library-management-server.vercel.app/addBooks", {
+    fetch("${import.meta.env.VITE_API_URL}/addBooks", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(bookInfo),
@@ -61,7 +61,7 @@ const AddBook = () => {
       <h2 className="mb-8 underline text-4xl font-bold dark:text-white">
         Add Book
       </h2>
-      <div className="py-8 px-4 mx-auto max-w-6xl lg:py-16 bg-orange-300 rounded-md">
+      <div className="py-8 px-4 mx-auto max-w-6xl lg:py-16 bg-slate-600 rounded-md">
         <form onSubmit={handleSubmit(handleAddBook)}>
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <div>

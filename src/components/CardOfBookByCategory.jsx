@@ -12,7 +12,7 @@ const CardOfBookByCategory = ({singleBook}) => {
           src={image}
         />
 
-        <div className="flex items-center px-6 py-3 bg-orange-400">
+        <div className="flex items-center px-6 py-3 bg-slate-500">
           <FaBookOpen className="w-6 h-6 text-white" />
 
           <h1 className="mx-3 text-lg font-semibold text-white">
@@ -40,13 +40,13 @@ const CardOfBookByCategory = ({singleBook}) => {
           <div className="mt-5 flex justify-between">
             <Link
               to="/"
-              className="btn bg-white border-2 border-orange-400"
+              className="btn bg-white border-2 border-slate-500"
             >
               Go Back
             </Link>
             <Link
               to={`/details/${_id}`}
-              className="btn bg-white border-2 border-orange-400"
+              className="btn bg-white border-2 border-slate-500"
             >
               View Details
             </Link>

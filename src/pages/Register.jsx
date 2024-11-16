@@ -17,7 +17,7 @@ const Register = () => {
   // sign up with app
   const handleSignUpWithApps = (provider) => {
     singUpWithApp(provider)
-      .then((result) => {
+      .then(() => {
         // console.log(result.user);
         toast.success("Account Created");
         setTimeout(() => {

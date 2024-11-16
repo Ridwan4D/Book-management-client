@@ -16,7 +16,7 @@ const HomeFaq = () => {
         </p>
       </div>
       <div className="space-y-2">
-        <div className="collapse collapse-plus bg-orange-400 text-white">
+        <div className="collapse collapse-plus bg-slate-500 text-white">
           <input type="radio" name="my-accordion-3" defaultChecked />
           <div className="collapse-title text-xl font-medium">
             How do I borrow books from the library?
@@ -31,7 +31,7 @@ const HomeFaq = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-plus bg-orange-400 text-white">
+        <div className="collapse collapse-plus bg-slate-500 text-white">
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium">
             Can I renew my borrowed books?
@@ -46,7 +46,7 @@ const HomeFaq = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-plus bg-orange-400 text-white">
+        <div className="collapse collapse-plus bg-slate-500 text-white">
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium">
             What if I can not find a specific book in the libraries collection?

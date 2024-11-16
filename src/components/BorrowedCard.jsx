@@ -12,7 +12,7 @@ const BorrowedCard = ({ singleBook, setBooks, books,allBooks }) => {
 
 
   const handleReturnBook = (_id) => {
-    axios.delete(`https://rt-library-management-server.vercel.app/allBorrowBooks/${_id}`).then((res) => {
+    axios.delete(`${import.meta.env.VITE_API_URL}/allBorrowBooks/${_id}`).then((res) => {
     //   console.log(res.data);
       if (res.data.deletedCount) {
         toast.success("Book Returned");
@@ -24,7 +24,7 @@ const BorrowedCard = ({ singleBook, setBooks, books,allBooks }) => {
     quantity = parseInt(quantity) + 1
     const bookInfo = {quantity}
     axios
-      .patch(`https://rt-library-management-server.vercel.app/addBooks/${bookDetail._id}`, bookInfo)
+      .patch(`${import.meta.env.VITE_API_URL}/addBooks/${bookDetail._id}`, bookInfo)
       .then((res) => {
         console.log(res.data);
       });
@@ -32,7 +32,7 @@ const BorrowedCard = ({ singleBook, setBooks, books,allBooks }) => {
 
   return (
     <div>
-      <section className="border-2 border-orange-400 rounded-md md:px-6 py-2 dark:bg-gray-100 dark:text-gray-800">
+      <section className="border-2 border-slate-500 rounded-md md:px-6 py-2 dark:bg-gray-100 dark:text-gray-800">
         <div className="container flex flex-col mx-auto lg:flex-row">
           <div className="w-full md:w-auto flex items-center">
             <img src={image} alt="" width="200px" className="mx-auto" />
@@ -40,7 +40,7 @@ const BorrowedCard = ({ singleBook, setBooks, books,allBooks }) => {
           <div className="flex flex-col w-full p-6 lg:w-2/3 md:p-8 lg:p-12">
             <FaBook className="h-10 w-10 md:mb-2" />
             <h2 className="text-3xl font-semibold leading-none">{book}</h2>
-            <p className="mt-1 md:mb-2 text-xl text-slate-400 font-semibold">
+            <p className="mt-1 md:mb-2 text-xl text-slate-500 font-semibold">
               {bookCategory}
             </p>
             <p className="mt-1 md:mb-3 text-2xl text-slate-900 font-semibold">
@@ -51,14 +51,14 @@ const BorrowedCard = ({ singleBook, setBooks, books,allBooks }) => {
                 <span>Borrow On: </span>
                 {borrowDate}
               </div>
-              <div className="badge bg-orange-400 gap-2 text-white font-semibold px-5 py-4">
+              <div className="badge bg-slate-500 gap-2 text-white font-semibold px-5 py-4">
                 <span>Return On: </span>
                 {returnDate}
               </div>
             </div>
             <button
               onClick={() => handleReturnBook(_id)}
-              className="self-start btn bg-orange-400 btn-wide mt-6 text-lg rounded-3xl dark:bg-default-600 font-semibold text-gray-50"
+              className="self-start btn bg-slate-500 btn-wide mt-6 text-lg rounded-3xl dark:bg-default-600 font-semibold text-gray-50"
             >
               Return Book
             </button>

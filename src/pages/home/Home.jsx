@@ -10,7 +10,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 const Home = () => {
     const {categories,setCategories} = useContext(AuthContext)
     useEffect(()=>{
-        axios.get('https://rt-library-management-server.vercel.app/allCategories')
+        axios.get(`${import.meta.env.VITE_API_URL}/allCategories`)
         .then(res=>{
             // console.log(res.data);
             setCategories(res.data)

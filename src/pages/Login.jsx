@@ -62,7 +62,7 @@ const Login = () => {
 
           <div className="my-3">
             <button
-              className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+              className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-500 hover:text-slate-900 hover:shadow transition duration-150"
               onClick={() => handleAppSignIn(googleProvider)}
             >
               <img
@@ -73,7 +73,7 @@ const Login = () => {
               <span>Login with Google</span>
             </button>
             <button
-              className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+              className="w-full text-center py-3 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-500 hover:text-slate-900 hover:shadow transition duration-150"
               onClick={() => handleAppSignIn(githubProvider)}
             >
               <img src={gitLogo} className="w-8 h-8 rounded-full" alt="" />{" "}

@@ -36,7 +36,7 @@ const AllBooks = () => {
         </h3>
         <div>
           <select
-            className="py-2 font-semibold px-5 border-2 border-orange-400 w-full"
+            className="py-2 font-semibold px-5 border-2 border-slate-500 w-full"
             onChange={handleFilter}
           >
             <option value="allBook">All Book</option>
